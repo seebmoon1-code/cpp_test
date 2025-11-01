@@ -1,4 +1,32 @@
 
+// mybook.cpp
+
+#include "mybook.h" // شامل کردن فایل هِدِر خودمان
+#include <locale>
+
+// ----------------------------------------------------
+// تعریف تابع (Function Definition)
+// نحوه کار تابع را پیاده‌سازی می‌کند.
+// ----------------------------------------------------
+void greetUser(std::wstring userName) {
+    // تنظیمات locale برای اطمینان از خروجی UTF-8
+    // (هرچند بهتر است در main انجام شود، اما برای اطمینان اینجا هم می‌گذاریم)
+    std::wcout.imbue(std::locale("")); 
+    
+    // استفاده از L برای رشته‌های فارسی
+    std::wcout << L"سلام، " << userName << L"! خوش آمدید." << std::endl;
+}
+
+
+
+
+
+
+
+
+
+
+
 // mybook.h
 #ifndef MYBOOK_H
 #define MYBOOK_H
