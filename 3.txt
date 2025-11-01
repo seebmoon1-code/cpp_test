@@ -1,0 +1,31 @@
+#include <iostream>
+#include <string>
+#include <locale>
+#include <cstdlib> // برای setlocale
+
+void greetUser(std::wstring userName) {
+    // از L قبل از رشته‌ها برای تعریف Wide String Literal استفاده می‌کنیم
+    std::wcout << L"سلام، " << userName << L"! خوش آمدید." << std::endl; 
+}
+
+int main() {
+    // تنظیم locale برای پشتیبانی از UTF-8 و کاراکترهای Wide
+    // این تنظیم تضمین می‌کند که wcin و wcout از UTF-8 استفاده کنند
+    std::setlocale(LC_ALL, "en_US.UTF-8"); 
+    std::wcout.imbue(std::locale(""));
+    std::wcin.imbue(std::locale(""));
+
+    // استفاده از wstring برای نام
+    std::wstring name;
+
+    std::wcout << L"لطفاً نام خود را وارد کنید: ";
+    
+    // استفاده از std::wcin برای ورودی
+    // (توجه: getline برای wcin کمی متفاوت است و معمولاً std::wcin >> name کفایت می‌کند)
+    std::wcin >> name; 
+    // اگر می‌خواهید با فاصله بخوانید: std::getline(std::wcin, name);
+
+    greetUser(name);
+
+    return 0;
+}
