@@ -1,0 +1,29 @@
+# CMakeLists.txt
+
+# حداقل نسخه مورد نیاز CMake
+cmake_minimum_required(VERSION 3.10)
+
+# نام پروژه را تعریف کنید
+project(MyPersianApp VERSION 1.0)
+
+# ----------------------------------------------------
+# 1. ساخت کتابخانه (Library)
+# ----------------------------------------------------
+# تعریف فایل‌های سورس برای کتابخانه
+set(MYBOOK_SOURCES mybook.cpp)
+
+# ساخت یک کتابخانه ایستا (STATIC) یا پویا (SHARED) به نام 'mybook'
+add_library(mybook STATIC ${MYBOOK_SOURCES})
+
+# ----------------------------------------------------
+# 2. ساخت فایل اجرایی (Executable)
+# ----------------------------------------------------
+# تعریف فایل‌های سورس برای برنامه اصلی
+set(APP_SOURCES main.cpp)
+
+# ساخت فایل اجرایی (خروجی: my_app)
+add_executable(my_app ${APP_SOURCES})
+
+# 3. لینک کردن فایل اجرایی به کتابخانه
+# فایل اجرایی my_app را به کتابخانه mybook و همچنین کتابخانه استاندارد C++ لینک کن
+target_link_libraries(my_app PRIVATE mybook)
