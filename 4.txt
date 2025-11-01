@@ -1,0 +1,34 @@
+// main.cpp
+
+#include <iostream>
+#include <string>
+#include <locale>
+#include <cstdlib> // برای setlocale
+
+// شامل کردن کتابخانه جدیدی که ساختیم
+#include "mybook.h" 
+
+int main() {
+    // *** تنظیمات ضروری locale باید در main بماند ***
+    // (چون این تنظیمات باید برای کل برنامه اعمال شوند)
+    std::setlocale(LC_ALL, "en_US.UTF-8"); 
+    std::wcout.imbue(std::locale(""));
+    std::wcin.imbue(std::locale(""));
+    // *******************************************
+    
+    std::wstring name;
+
+    std::wcout << L"لطفاً نام خود را وارد کنید: ";
+    
+    // std::wcin >> name; // خواندن فقط یک کلمه
+    std::getline(std::wcin, name); // خواندن نام با فاصله
+
+    // فراخوانی تابع از کتابخانه mybook
+    greetUser(name);
+
+    std::wcout << L"Process returned 0 (0x0). Press ENTER to continue." << std::endl;
+    std::wcin.ignore();
+    std::wcin.get();
+    
+    return 0;
+}
